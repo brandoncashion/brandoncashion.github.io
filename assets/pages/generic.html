@@ -24,14 +24,14 @@
     (function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=[];
     v=['initialize','identify','updateOptions','pageLoad'];for(w=0,x=v.length;w<x;++w)(function(m){
         o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
-        y=e.createElement(n);y.async=!0;y.src='https://pendo-dev-static.storage.googleapis.com/agent/static/'+apiKey+'/pendo.js';
+        y=e.createElement(n);y.async=!0;y.src='https://cdn.pendo.io/agent/static/'+apiKey+'/pendo.js';
         z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
 
         // Call this whenever information about your visitors becomes available
         // Please use Strings, Numbers, or Bools for value types.
         pendo.initialize({
             visitor: {
-                id:              'bcashion_RC'   // Required if user is logged in
+                id:              'bcashion'   // Required if user is logged in
                 //email:        'bcashion+RCintetration@pendo.io', // Recommended if using Pendo Feedback, or NPS Email
                 //full_name:   'Brandon CashionRC' // Recommended if using Pendo Feedback
                 // role:         // Optional
@@ -41,7 +41,7 @@
             },
 
             account: {
-                id:           'Brandon_AccountRC' // Highly recommended
+                id:           'Brandon_Account' // Highly recommended
                 //name:        'RC_Account' // Optional
                 // is_paying:    // Recommended if using Pendo Feedback
                 // monthly_value:// Recommended if using Pendo Feedback
@@ -53,7 +53,7 @@
                 // as long as it's not one of the above reserved names.
             }
         });
-})('d619a4f6-b1ad-4dd3-4aef-e6963a850a80');
+})('9daef9f3-5134-4f13-7c50-a15573745a57');
 </script>
 	</head>
 	<body>
@@ -65,7 +65,7 @@
 					<a href="/index.html">
 						<header id="header">
 						<h1>Generic</h1>
-						<p>This page is specifically built to test Pendo Feedback RC Integration.  Currently installed for Dev subscription: Brandon_Dev ,  application 1</p>
+						<p>This page is specifically built to test Pendo Feedback RC Integration.  Currently installed for Prod subscription: Brandon_Dev ,  application 1</p>
 						</header>
 					</a>
 
