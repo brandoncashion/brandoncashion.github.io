@@ -20,16 +20,40 @@
 		<script src ="../js/jquery.scrolly.min.js" type="text/javascript"></script>
 		<script src ="../js/main.js" type="text/javascript"></script>
 		<script>
-			(function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=[];
-			v=['initialize','identify','updateOptions','pageLoad'];for(w=0,x=v.length;w<x;++w)(function(m){
+		(function(apiKey){
+	(function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=[];
+	v=['initialize','identify','updateOptions','pageLoad'];for(w=0,x=v.length;w<x;++w)(function(m){
 			o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
-			y=e.createElement(n);y.async=!0;y.src='https://pendo-apollo-static.storage.googleapis.com/agent/static/7bba2cbf-ed8f-45ba-540a-1f13d327e988/pendo.js';
+			y=e.createElement(n);y.async=!0;y.src='https://cdn.pendo.io/agent/static/'+apiKey+'/pendo.js';
 			z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
 
-			pendo.initialize(Init());
+			//pendo.initialize(Init());
+			pendo.initialize({
+            visitor: {
+                id:              'Brandon_RCTesting',   // Required if user is logged in
+                 email:        "bcashion+metadatatest@pendo.io", // Recommended if using Pendo Feedback, or NPS Email
+                 full_name:    "Brandon Cashion Test", // Recommended if using Pendo Feedback
+                 role:         "Dolphin", // Optional
+								 fullname:     "Brandon Cashion"
+                // You can add any additional visitor level key-values here,
+                // as long as it's not one of the above reserved names.
+            },
 
-			pendo.TOOLTIP_ARROW_SIZE = 75;
+            account: {
+                id:           'brandonaccount',   // Highly recommended
+                 name:         'Brandon Account',   // Optional
+                 is_paying:    true,    // Recommended if using Pendo Feedback
+                 monthly_value:  5000,    // Recommended if using Pendo Feedback
+								 label: 			'doesthisdisplay'
+                // planLevel:    // Optional
+                // planPrice:    // Optional
+                // creationDate: // Optional
 
+                // You can add any additional account level key-values here,
+                // as long as it's not one of the above reserved names.
+            }
+        });
+			})('9e5e67ca-ef8f-421f-7780-2aa8c920dd77');
 		</script>
 
 	</head>
