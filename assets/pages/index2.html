@@ -24,17 +24,17 @@
 	(function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=[];
 	v=['initialize','identify','updateOptions','pageLoad'];for(w=0,x=v.length;w<x;++w)(function(m){
 			o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
-			y=e.createElement(n);y.async=!0;y.src='https://cdn.pendo.io/agent/static/'+apiKey+'/pendo.js';
+			y=e.createElement(n);y.async=!0;y.src='https://pendo-test-static.storage.googleapis.com/agent/static/'+apiKey+'/pendo.js';
 			z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
 
 			//pendo.initialize(Init());
 			pendo.initialize({
             visitor: {
-                id:              'Brandon_RCTesting',   // Required if user is logged in
-                 email:        "bcashion+metadatatest@pendo.io", // Recommended if using Pendo Feedback, or NPS Email
-                 full_name:    "Brandon Cashion Test", // Recommended if using Pendo Feedback
+                id:              'Brandon_staging',   // Required if user is logged in
+                 email:        "bcashion+staging@pendo.io", // Recommended if using Pendo Feedback, or NPS Email
+                 full_name:    "Brandon Cashion", // Recommended if using Pendo Feedback
                  role:         "Dolphin", // Optional
-								 fullname:     "Brandon Cashion"
+				 fullname:     "Brandon Cashion"
                 // You can add any additional visitor level key-values here,
                 // as long as it's not one of the above reserved names.
             },
@@ -53,7 +53,7 @@
                 // as long as it's not one of the above reserved names.
             }
         });
-			})('9e5e67ca-ef8f-421f-7780-2aa8c920dd77');
+			})('532bedce-6c43-4779-60c6-71a4d59dd47b');
 		</script>
 
 	</head>
@@ -89,7 +89,7 @@
 								<div class="spotlight">
 									<div class="content">
 										<header class="major">
-											<h2>Welcome to Spencer's Website Sandbox!</h2>
+											<h2>Staging Feedback test page</h2>
 										</header>
 										<p>This site is a sandbox for developing HTML/CSS/JS applications and integrations.</p>
 										<ul class="actions">
