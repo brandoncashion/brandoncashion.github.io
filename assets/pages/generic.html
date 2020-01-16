@@ -24,28 +24,28 @@
     (function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=[];
     v=['initialize','identify','updateOptions','pageLoad'];for(w=0,x=v.length;w<x;++w)(function(m){
         o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
-        y=e.createElement(n);y.async=!0;y.src='https://pendo-dev-static.storage.googleapis.com/agent/static/'+apiKey+'/pendo.js';
+        y=e.createElement(n);y.async=!0;y.src='https://cdn.pendo.io/agent/static/'+apiKey+'/pendo.js';
         z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
 
         // Call this whenever information about your visitors becomes available
         // Please use Strings, Numbers, or Bools for value types.
 				pendo.initialize({
 	            visitor: {
-	                id:              'AcountNameTesting',   // Required if user is logged in
-	                 email:        "bcashion+accountname@pendo.io", // Recommended if using Pendo Feedback, or NPS Email
-	                 full_name:    "Brandon Cashion Test", // Recommended if using Pendo Feedback
-	                 role:         "Dolphin" // Optional
+	                id:              '2dc8ec07-3a5d-4410-9993-cfa319464f92',   // Required if user is logged in
+	                 email:        "cameron.black+testing@pendo.io ", // Recommended if using Pendo Feedback, or NPS Email
+	                 full_name:    "Cameron Black" // Recommended if using Pendo Feedback
+	                 //role:         "Dolphin" // Optional
 					//fullname:     "Brandon Cashion"
 	                // You can add any additional visitor level key-values here,
 	                // as long as it's not one of the above reserved names.
 	            },
 
 	            account: {
-	                id:           'brandonRCaccount',   // Highly recommended
+	                id:           '03de9eb8-072b-4cc2-b6aa-10c4d8989594',   // Highly recommended
 	                 //name:         'ThisWorks?',   // Optional
 	                 is_paying:    true,    // Recommended if using Pendo Feedback
-	                 monthly_value:  5000,    // Recommended if using Pendo Feedback
-									 label: 			'doesthisdisplay'
+	                 monthly_value:  20   // Recommended if using Pendo Feedback
+					//label: 			'doesthisdisplay'
 	                // planLevel:    // Optional
 	                // planPrice:    // Optional
 	                // creationDate: // Optional
