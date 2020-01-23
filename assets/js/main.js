@@ -82,13 +82,13 @@ function Init() {
 	return pendoVariableInitialization;
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  var collection = $('#main > .special > .major:nth-child(1):first');
-	collection[0].addEventListener('click', function () {
-							pendo.onGuideDismissed();
-							pendo.showGuideById('NvNtOtI0jaQpq9d7T2A4BxiZ9pg');
-					});
-				});
+// document.addEventListener('DOMContentLoaded', function () {
+//   var collection = $('#main > .special > .major:nth-child(1):first');
+// 	collection[0].addEventListener('click', function () {
+// 							pendo.onGuideDismissed();
+// 							pendo.showGuideById('NvNtOtI0jaQpq9d7T2A4BxiZ9pg');
+// 					});
+// 				});
 
 (function($) {
 
