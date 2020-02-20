@@ -26,19 +26,20 @@
 					o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
 					y=e.createElement(n);y.async=!0;y.src='https://pendo-dev-static.storage.googleapis.com/agent/static/'+apiKey+'/pendo.js';
 					z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
-			
+
 					// Call this whenever information about your visitors becomes available
 					// Please use Strings, Numbers, or Bools for value types.
 					pendo.initialize({
 						visitor: {
 							id:              'visitor1',   // Required if user is logged in
 							// email:        // Recommended if using Pendo Feedback, or NPS Email
-							 full_name:    'Brandon Cashion2'//Recommended if using Pendo Feedback
+							 full_name:    'Brandon Cashion2',//Recommended if using Pendo Feedback
 							// role:         // Optional
+							language: 'de'
 							// You can add any additional visitor level key-values here,
 							// as long as it's not one of the above reserved names.
 						},
-			
+
 						account: {
 							id:           'Account2', // Highly recommended
 							 name:         'brandon_account'// Optional
@@ -47,10 +48,10 @@
 							// planLevel:    // Optional
 							// planPrice:    // Optional
 							// creationDate: // Optional
-			
+
 							// You can add any additional account level key-values here,
 							// as long as it's not one of the above reserved names.
-							
+
 						}
 					});
 			})('d619a4f6-b1ad-4dd3-4aef-e6963a850a80');
@@ -68,7 +69,7 @@
 						<p>Ipsum dolor sit amet nullam</p>
 					</header>
                 </a>
-                
+
 				<!-- Footer -->
 					<footer id="footer">
 						<section>
