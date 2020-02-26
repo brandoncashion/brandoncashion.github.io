@@ -28,21 +28,28 @@
         y=e.createElement(n);y.async=!0;y.src='https://pendo-magic-static.storage.googleapis.com/agent/static/'+apiKey+'/pendo.js';
         z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
 
+				//Testing for APP-28637
+				var lastAnnotation = { page: 'annotateTest/testingslashes/slashyslashslash/slash'};
+					function annotateUrl() {
+  				var page = lastAnnotation;
+  			return page;
+				};
+
         // Call this whenever information about your visitors becomes available
         // Please use Strings, Numbers, or Bools for value types.
 				pendo.initialize({
 	            visitor: {
-	                id:              'brandon_App25040',   // Required if user is logged in
-	                 email:        "bcashion+25040@pendo.io", // Recommended if using Pendo Feedback, or NPS Email
-	                full_name:    "Brandon 25040" // Recommended if using Pendo Feedback
+	                id:              'brandon_user111',   // Required if user is logged in
+	                 email:        "bcashion+user111@pendo.io", // Recommended if using Pendo Feedback, or NPS Email
+	                full_name:    "Brandon User" // Recommended if using Pendo Feedback
 	            //      //role:         "Dolphin", // Optional
 	            //     // You can add any additional visitor level key-values here,
 	            //     // as long as it's not one of the above reserved names.
 	            },
 
 	            account: {
-	               id:           'App25040',   // Highly recommended
-	                name:         'Brandon VUE rawEvents',   // Optional
+	               id:           '111',   // Highly recommended
+	                name:         'Stupid Account',   // Optional
 	                 is_paying:    true,    // Recommended if using Pendo Feedback
 	                 monthly_value:  100000    // Recommended if using Pendo Feedback
 	            //     // planLevel:    // Optional
@@ -51,7 +58,10 @@
 
 	            //     // You can add any additional account level key-values here,
 	            //     // as long as it's not one of the above reserved names.
-	            }
+						},
+
+						annotateUrl: annotateUrl
+
         });
 })('90d90233-8c72-4c92-4ded-95eabd1d0bf9');
 </script>
