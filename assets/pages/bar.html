@@ -27,6 +27,12 @@
 					y=e.createElement(n);y.async=!0;y.src='https://pendo-dev-static.storage.googleapis.com/agent/static/'+apiKey+'/pendo.js';
 					z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
 
+					//annotate url
+				var lastAnnotation = { page: 'annotateTest/testingslashes/slashyslashslash/slash'};
+					function annotateUrl() {
+  				var page = lastAnnotation;
+  			return page;
+				};
 					// Call this whenever information about your visitors becomes available
 					// Please use Strings, Numbers, or Bools for value types.
 					pendo.initialize({
@@ -52,7 +58,9 @@
 							// You can add any additional account level key-values here,
 							// as long as it's not one of the above reserved names.
 
-						}
+						},
+						//annotate url
+						annotateUrl: annotateUrl
 					});
 			})('d619a4f6-b1ad-4dd3-4aef-e6963a850a80');
 			</script>
