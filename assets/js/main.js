@@ -234,7 +234,7 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal and force Browser focus
 btn.onclick = function() {
   modal.style.display = "block";
-	document.getElementByClassName("modal-content").focus();
+	document.getElementsByClassName("modal-content").focus();
 }
 
 // When the user clicks on <span> (x), close the modal
