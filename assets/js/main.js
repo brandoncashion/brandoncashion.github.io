@@ -234,9 +234,9 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";
-  $('#myModal').on('shown.bs.modal', function () {
-    $('.modal-content').focus();
-	})  
+  modal.$el.on('shown', function () {
+	$('input:text:visible:first', this).focus();
+	});   
 }
 
 // When the user clicks on <span> (x), close the modal
