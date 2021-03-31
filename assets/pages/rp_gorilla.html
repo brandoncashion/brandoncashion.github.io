@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Pendo-Dev 2nd app</title>
+		<title>Pendo-Atlas for web testing</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="../js/ie/html5shiv.js"></script><![endif]-->
@@ -24,24 +24,24 @@
 				(function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=[];
 				v=['initialize','identify','updateOptions','pageLoad'];for(w=0,x=v.length;w<x;++w)(function(m){
 					o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
-					y=e.createElement(n);y.async=!0;y.src='https://pendo-dev-static.storage.googleapis.com/agent/static/'+apiKey+'/pendo.js';
+					y=e.createElement(n);y.async=!0;y.src='https://pendo-atlas-static.storage.googleapis.com/agent/static/'+apiKey+'/pendo.js';
 					z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
 
 					// Call this whenever information about your visitors becomes available
 					// Please use Strings, Numbers, or Bools for value types.
 					pendo.initialize({
 						visitor: {
-							id:              'gorilla1',   // Required if user is logged in
+							id:              '',   // Required if user is logged in
 							// email:        // Recommended if using Pendo Feedback, or NPS Email
-							 full_name:    'Big Bad Gorilla Tester',//Recommended if using Pendo Feedback
+							// full_name:    'Big Bad Gorilla Tester',//Recommended if using Pendo Feedback
 							// role:         // Optional
 							// You can add any additional visitor level key-values here,
 							// as long as it's not one of the above reserved names.
 						},
 
 						account: {
-							id:           '212125125', // Highly recommended
-							 name:         'Welcome to the Jungle'// Optional
+							//id:           '212125125', // Highly recommended
+							// name:         'Welcome to the Jungle'// Optional
 							// is_paying:    // Recommended if using Pendo Feedback
 							// monthly_value:// Recommended if using Pendo Feedback
 							// planLevel:    // Optional
@@ -53,7 +53,7 @@
 
 						}
 					});
-			})('23ef9b9f-b0e5-4695-400b-446c8dbd977c');
+			})('a444345e-cef3-4b3b-50bb-586d738dd53a');
 			</script>
 	</head>
 	<body>
@@ -64,8 +64,8 @@
 				<!-- Header -->
 				<a href="/index.html">
 					<header id="header">
-						<h1>Site for Roles/Permissions Gorilla testing on Pendo-Dev</h1>
-						<p>Application -323232</p>
+						<h1>This site for pendo-atlas environment WEB CORE testing</h1>
+						<p>my dudes</p>
 					</header>
 				</a>
 
