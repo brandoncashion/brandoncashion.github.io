@@ -28,11 +28,11 @@
 					z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
 
 					//ANNOTATE URL EXAMPLE - PIECE 1 (Piece 2 is below the pendo.initialize block)
-				/* var lastAnnotation = { page: 'annotateTest/testingslashes/slashyslashslash/slash'};
-						//function annotateUrl() {
-  						//var page = lastAnnotation;
-  						//return page;
-				};  */
+				var lastAnnotation = { page: 'annotateTest/testingslashes/slashyslashslash/slash'};
+						function annotateUrl() {
+  						var page = lastAnnotation;
+  						return page;
+						};  
 
 					// Call this whenever information about your visitors becomes available
 					// Please use Strings, Numbers, or Bools for value types.
@@ -61,7 +61,7 @@
 
 						},
 						//ANNOTATE URL EXAMPLE - PIECE 2
-						//annotateUrl: annotateUrl
+						annotateUrl: annotateUrl
 						
 						// SANITIZE URL EXAMPLE
 						/* sanitizeUrl: function (url) {
