@@ -19,7 +19,8 @@
 		<script src ="../js/jquery.scrollex.min.js" type="text/javascript"></script>
 		<script src ="../js/jquery.scrolly.min.js" type="text/javascript"></script>
 		<script src ="../js/main.js" type="text/javascript"></script>
-		<script>
+<!-- Normal Pendo install snippet-->
+<!-- <script>
 (function(apiKey){
     (function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=[];
     v=['initialize','identify','updateOptions','pageLoad'];for(w=0,x=v.length;w<x;++w)(function(m){
@@ -41,6 +42,24 @@
         });
 		pendo.disableGuides();
 })('bdc6c6f0-e64f-40e6-7825-2e7ac79c2787');
+</script> -->
+<!-- JWT signed snippet -->
+<script>
+	(function(apiKey){
+		(function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=o._q||[];
+		v=['initialize','identify','updateOptions','pageLoad','track'];for(w=0,x=v.length;w<x;++w)(function(m){
+			o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
+			y=e.createElement(n);y.async=!0;y.src='https://cdn.pendo-magic.pendo-dev.com/agent/static/'+apiKey+'/pendo.js';
+			z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
+	
+			// Hard coded JWT with visitor and account metadata Bcash_jwt_visitor and BCash_jwt_account
+			let myJwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVHlwZSI6Imdvb2dsZSIsImV4cCI6MTcwMTE5NjQwMiwiZ3JhbnRUaW1lIjoiMTc5OWI3MGQ4MjcyZTYwYiIsImlhdCI6MTcwMDU5MTYwMiwibmJmIjoxNzAwNTkxNjAyLCJzZXNzaW9uRXBvY2giOiIxNzkzOTgzM2RmODA2YjViIiwic2Vzc2lvbmlkIjoiMzc5ZDJiYjA1MTg1Zjc5MCIsInVzZXJpZCI6IjU2NDMzMDcxMDc0ODM2NDgiLCJ2aXNpdG9ySWQiOiJCY2FzaF9qd3RfdmlzaXRvciIsImFjY291bnRJZCI6IkJjYXNoX2p3dF9hY2NvdW50In0._QGDc6Ufp0v3wDMgv6DpmPcjPgC5-J7irc31-2VDOEU'
+			// Call this whenever information about your visitors becomes available
+			pendo.initialize({
+				jwt: myJwt, // "jwt" variable in Step 2
+				signingKeyName: 'bcas-bcas-TKB1N'
+			});
+	})('bdc6c6f0-e64f-40e6-7825-2e7ac79c2787');
 </script>
 	</head>
 	<body>
