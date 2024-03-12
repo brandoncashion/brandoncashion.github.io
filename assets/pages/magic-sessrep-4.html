@@ -57,11 +57,12 @@
 
 		var errorButton = document.getElementById('error-btn');
 		var pendoAgentVersion = window.pendo.VERSION;
-		var pendoVisitor = window.pendo.getVisitorId();
+		var pendoVisitor = null;
 		var currentTimeStamp = null;
 
 		errorButton.addEventListener('click', function() {
 			currentTimeStamp = Date.now();
+			pendoVisitor = window.pendo.getVisitorId();
   			console.error(`Error Click sent to Pendo Agent ${pendoAgentVersion} at ${currentTimeStamp} by ${pendoVisitor}`);
 		});
 		};
