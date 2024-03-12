@@ -46,15 +46,15 @@
 		</script>
 	<!-- Add Event Listener to send Error Clicks to the Pendo Agent -->
 	<script>
-		(function(){
-		const errorButton = document.getElementById('error-btn');
-		const pendoAgentVersion = window.pendo.VERSION;
-		const pendoVisitor = window.pendo.visitorId;
-		var currentTimeStamp;
+		const setupValues = setupSendErrorClicksVars();
+		var errorButton = setupValues.errBtn;
+		var pendoAgentVersion = setupValues.agent;
+		var pendoVisitor = setupValues.viistor;
+		var currentTimeStamp = setupValues.time;
 
 		errorButton.addEventListener('click', function() {
-			currentTimestamp = Date.now();
-  			console.error(`Error Click sent to Pendo Agent ${pendoAgentVersion} at ${currentTimeStamp} by ${pendoVisitor}`);});
+			currentTimeStamp = Date.now();
+  			console.error(`Error Click sent to Pendo Agent ${pendoAgentVersion} at ${currentTimeStamp} by ${pendoVisitor}`);
 		});
 	</script>
 

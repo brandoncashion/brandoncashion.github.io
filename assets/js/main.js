@@ -253,14 +253,19 @@ window.onclick = function(event) {
 */
 })(jQuery);
 
-// function setupSendErrorClicksListener() {
-// 	const errorButton = document.getElementById('error-btn');
-// 	const pendoAgentVersion = window.pendo.VERSION;
-// 	const pendoVisitor = window.pendo.visitorId;
-// 	var currentTimeStamp;
+function setupSendErrorClicksVars() {
+	var errorButton = document.getElementById('error-btn');
+	var pendoAgentVersion = window.pendo.VERSION;
+	var pendoVisitor = window.pendo.visitorId;
+	var currentTimeStamp = null;
 
-// 	errorButton.addEventListener('click', async _ => {
-// 		currentTimestamp = Date.now();
-//   		console.error(`Error Click sent to Pendo Agent ${pendoAgentVersion} at ${currentTimeStamp} by ${pendoVisitor}`);
-//   	});
-// }
+	var setupValues =
+	{
+		errBtn: errorButton,
+		agent: pendoAgentVersion,
+		visitor: pendoVisitor,
+		time: currentTimeStamp
+	};
+
+	return setupValues;
+}
