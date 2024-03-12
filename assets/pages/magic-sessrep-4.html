@@ -48,12 +48,17 @@
 	<script>
 		function hookupErrorClickHandler() {
 		window.console.log('did this work?????------------------');
-		var setupValues = window.setupSendErrorClicksVars();
+		//var setupValues = window.setupSendErrorClicksVars();
 
-		var errorButton = setupValues.errBtn;
-		var pendoAgentVersion = setupValues.agent;
-		var pendoVisitor = setupValues.visitor;
-		var currentTimeStamp = setupValues.time;
+		// var errorButton = setupValues.errBtn;
+		// var pendoAgentVersion = setupValues.agent;
+		// var pendoVisitor = setupValues.visitor;
+		// var currentTimeStamp = setupValues.time;
+
+		var errorButton = document.getElementById('error-btn');
+		var pendoAgentVersion = window.pendo.VERSION;
+		var pendoVisitor = window.pendo.getVisitorId();
+		var currentTimeStamp = null;
 
 		errorButton.addEventListener('click', function() {
 			currentTimeStamp = Date.now();
