@@ -20,16 +20,16 @@
 		<script src ="../js/jquery.scrolly.min.js" type="text/javascript"></script>
 		<script src ="../js/main.js" type="text/javascript"></script>
 		<script>
-(function(apiKey){
-    (function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=[];
-    v=['initialize','identify','updateOptions','pageLoad'];for(w=0,x=v.length;w<x;++w)(function(m){
-        o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
-        y=e.createElement(n);y.async=!0;y.src='https://cdn.pendo-magic.pendo-dev.com/agent/static/'+apiKey+'/pendo.js';
-        z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
+		(function(apiKey){
+    		(function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=[];
+    			v=['initialize','identify','updateOptions','pageLoad'];for(w=0,x=v.length;w<x;++w)(function(m){
+        		o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
+        		y=e.createElement(n);y.async=!0;y.src='https://cdn.pendo-magic.pendo-dev.com/agent/static/'+apiKey+'/pendo.js';
+        		z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
 
-        // Call this whenever information about your visitors becomes available
-        // Please use Strings, Numbers, or Bools for value types.
-		pendo.initialize({
+        	// Call this whenever information about your visitors becomes available
+        	// Please use Strings, Numbers, or Bools for value types.
+			pendo.initialize({
 					visitor: {
 	                id:              'bcashReplay4',   // Required if user is logged in
                     email:   'bcashreplayuser@fakemail.com',
@@ -39,13 +39,21 @@
 	                id:           'BCASH',   // Highly recommended
 	                // name:         'Pages',   // Optional
 	            }
-        });
-})('ef8580c1-da5d-4bba-787c-22c1dab68438');
+        });})('ef8580c1-da5d-4bba-787c-22c1dab68438');
+		</script>
+	<script>
+		const errorButton = document.getElementById('error-btn');
+		const pendoAgentVersion = window.pendo.VERSION;
+		const pendoVisitor = window.pendo.visitorId;
+		var currentTimeStamp;
 
-	// activate error clicks listener from main.js
-	setupSendErrorClicks();
+		function sendErrorClick() {
+			currentTimestamp = Date.now();
+  			console.error(`Error Click sent to Pendo Agent ${pendoAgentVersion} at ${currentTimeStamp} by ${pendoVisitor}`);
+		}
 
-</script>
+		errorButton.addEventListener('click', sendErrorClick());
+	</script>
 	</head>
 	<body style=background-color:teal>
 
@@ -91,7 +99,7 @@
 								<li class="button" style="color:coral">Feature 1</li>
                                 <li class="button" style="color:rgb(153, 255, 80)">Feature 2</li>
                                 <li class="button" style="color:rgb(80, 200, 255)">Feature 3</li>
-								<li class="button" id="error-btn" style="color:rgb(247, 241, 62); background-color:black">Send Error Click</li>
+								<li class="button" id="error-btn" style="color:rgb(247, 241, 62)">Send Error Click</li>
 							</ul>
 						</section>
 						<section>
