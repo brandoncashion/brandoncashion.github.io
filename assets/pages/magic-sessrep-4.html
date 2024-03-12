@@ -46,7 +46,7 @@
 		</script>
 	<!-- Add Event Listener to send Error Clicks to the Pendo Agent -->
 	<script>
-		(function() {
+		function hookupErrorClickHandler() {
 		window.console.log('did this work?????------------------');
 		var setupValues = window.setupSendErrorClicksVars();
 
@@ -59,11 +59,11 @@
 			currentTimeStamp = Date.now();
   			console.error(`Error Click sent to Pendo Agent ${pendoAgentVersion} at ${currentTimeStamp} by ${pendoVisitor}`);
 		});
-	});
+		};
 	</script>
 
 	</head>
-	<body style=background-color:teal>
+	<body onload="hookupErrorClickHandler()" style=background-color:teal>
 
 		<!-- Wrapper -->
 			<div id="wrapper">
