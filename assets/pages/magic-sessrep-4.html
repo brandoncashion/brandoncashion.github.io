@@ -19,6 +19,8 @@
 		<script src ="../js/jquery.scrollex.min.js" type="text/javascript"></script>
 		<script src ="../js/jquery.scrolly.min.js" type="text/javascript"></script>
 		<script src ="../js/main.js" type="text/javascript"></script>
+
+		<!-- Initialize Pendo Snippet -->
 		<script>
 		(function(apiKey){
     		(function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=[];
@@ -40,7 +42,9 @@
 	                // name:         'Pages',   // Optional
 	            }
         });})('ef8580c1-da5d-4bba-787c-22c1dab68438');
+	
 		</script>
+	<!-- Add Event Listener to send Error Clicks to the Pendo Agent -->
 	<script>
 		const errorButton = document.getElementById('error-btn');
 		const pendoAgentVersion = window.pendo.VERSION;
@@ -54,6 +58,7 @@
 
 		errorButton.addEventListener('click', sendErrorClick());
 	</script>
+
 	</head>
 	<body style=background-color:teal>
 
