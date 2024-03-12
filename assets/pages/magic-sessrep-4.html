@@ -52,13 +52,9 @@
 		const pendoVisitor = window.pendo.visitorId;
 		var currentTimeStamp;
 
-		function sendErrorClick() {
+		errorButton.addEventListener('click', function() {
 			currentTimestamp = Date.now();
-  			console.error(`Error Click sent to Pendo Agent ${pendoAgentVersion} at ${currentTimeStamp} by ${pendoVisitor}`);
-		}
-
-		errorButton.addEventListener('click', sendErrorClick());
-
+  			console.error(`Error Click sent to Pendo Agent ${pendoAgentVersion} at ${currentTimeStamp} by ${pendoVisitor}`);});
 		});
 	</script>
 
