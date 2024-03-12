@@ -46,6 +46,7 @@
 		</script>
 	<!-- Add Event Listener to send Error Clicks to the Pendo Agent -->
 	<script>
+		(function(){
 		const errorButton = document.getElementById('error-btn');
 		const pendoAgentVersion = window.pendo.VERSION;
 		const pendoVisitor = window.pendo.visitorId;
@@ -57,6 +58,8 @@
 		}
 
 		errorButton.addEventListener('click', sendErrorClick());
+
+		});
 	</script>
 
 	</head>
