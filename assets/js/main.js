@@ -253,7 +253,7 @@ window.onclick = function(event) {
 */
 })(jQuery);
 
-function sendErrorClick() {
+function setupSendErrorClicksListener() {
 	const errorButton = document.getElementById('error-btn');
 	const pendoAgentVersion = window.pendo.VERSION;
 	const pendoVisitor = window.pendo.visitorId;
