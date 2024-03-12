@@ -257,9 +257,10 @@ function sendErrorClick() {
 	const errorButton = document.getElementById('error-btn');
 	const pendoAgentVersion = window.pendo.VERSION;
 	const pendoVisitor = window.pendo.visitorId;
-	var currentTimestamp = Date.now();
+	var currentTimeStamp;
 
 	errorButton.addEventListener('click', async _ => {
+		currentTimestamp = Date.now();
   		console.error(`Error Click sent to Pendo Agent ${pendoAgentVersion} at ${currentTimeStamp} by ${pendoVisitor}`);
   	});
 }
