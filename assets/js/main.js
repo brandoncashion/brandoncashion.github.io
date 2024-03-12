@@ -253,6 +253,9 @@ window.onclick = function(event) {
 */
 })(jQuery);
 
+
+// grabbing and passing values for Error Click listener setup
+// **I ended up not using this, and implemented it a much quicker and dirtier way directly in the HTML doc**
 function setupSendErrorClicksVars() {
 	var errorButton = document.getElementById('error-btn');
 	var pendoAgentVersion = window.pendo.VERSION;

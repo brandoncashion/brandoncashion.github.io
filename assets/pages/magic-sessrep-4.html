@@ -47,24 +47,17 @@
 	<!-- Add Event Listener to send Error Clicks to the Pendo Agent -->
 	<script>
 		function hookupErrorClickHandler() {
-		window.console.log('did this work?????------------------');
-		//var setupValues = window.setupSendErrorClicksVars();
+			var errorButton = document.getElementById('error-btn');
+			var pendoAgentVersion = window.pendo.VERSION;
+			var pendoVisitor = null;
+			var currentTimeStamp = null;
 
-		// var errorButton = setupValues.errBtn;
-		// var pendoAgentVersion = setupValues.agent;
-		// var pendoVisitor = setupValues.visitor;
-		// var currentTimeStamp = setupValues.time;
-
-		var errorButton = document.getElementById('error-btn');
-		var pendoAgentVersion = window.pendo.VERSION;
-		var pendoVisitor = null;
-		var currentTimeStamp = null;
-
-		errorButton.addEventListener('click', function() {
-			currentTimeStamp = Date.now();
-			pendoVisitor = window.pendo.getVisitorId();
-  			console.error(`Error Click sent to Pendo Agent ${pendoAgentVersion} at ${currentTimeStamp} by ${pendoVisitor}`);
-		});
+			window.console.log('-------Adding Click Listener to the page-------');
+			errorButton.addEventListener('click', function() {
+				currentTimeStamp = Date.now();
+				pendoVisitor = window.pendo.getVisitorId();
+  				console.error(`Error Click sent to Pendo Agent ${pendoAgentVersion} at ${currentTimeStamp} by ${pendoVisitor}`);
+			});
 		};
 	</script>
 
