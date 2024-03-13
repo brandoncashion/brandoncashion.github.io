@@ -76,7 +76,7 @@
 				document.getElementById('error-btn-interval-console').style.cssText = 'color:coral';
 				document.getElementById('error-btn-interval-console').innerText = "Stop Sending Console Errors per 1 second";
 			} else {
-				console.log('-----Turning OFF console error polling-----');
+				console.log('-----Turning OFF error polling-----');
 				window.clearInterval(interval);
 				pollingErrors = false;
 				document.getElementById('error-btn-interval-console').style.cssText = 'color:black';
@@ -96,7 +96,7 @@
 				document.getElementById('error-btn-interval-js').style.cssText = 'color:coral';
 				document.getElementById('error-btn-interval-js').innerText = "Stop Sending JS Errors per 1 second";
 			} else {
-				console.log('-----Turning OFF js error polling-----');
+				console.log('-----Turning OFF error polling-----');
 				window.clearInterval(interval);
 				pollingErrors = false;
 				document.getElementById('error-btn-interval-js').style.cssText = 'color:black';
