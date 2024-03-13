@@ -46,10 +46,11 @@
 		</script>
 	<!-- Add Event Listener to send Error Clicks to the Pendo Agent -->
 	<script>
+		var pollingErrors = false;
+		var interval = null;
+
 		function hookupErrorClickHandler() {
 			let errorButtons = document.querySelectorAll("#error-btn");
-
-			var pollingErrors = false;
 
 			var pendoAgentVersion = window.pendo.VERSION;
 			var pendoVisitor = null;
@@ -63,14 +64,12 @@
   					console.error(`Error Click sent to Pendo Agent ${pendoAgentVersion} at ${currentTimeStamp} by ${pendoVisitor}`);		
     			});
 			});
-
-			return pollingErrors;
 		};
 
 		function sendConsoleErrorsOnInterval() {
 			if(pollingErrors == false) {
 				console.log('I made it into the IF fxn condition');
-				var interval = window.setInterval(function() {
+				interval = window.setInterval(function() {
 					console.error("This is a Generic Console logged Error");
 				}, 1000);
 				pollingErrors = true;
@@ -85,7 +84,7 @@
 
 		function sendJsErrorsOnInterval() {
 			if(pollingErrors = false) {
-				var interval = window.setInterval(function() {
+				vinterval = window.setInterval(function() {
 					notARealFunction();
 				}, 1000);
 			pollingErrors = true;
