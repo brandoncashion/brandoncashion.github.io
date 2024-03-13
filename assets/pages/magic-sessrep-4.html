@@ -65,11 +65,6 @@
   					console.error(`Error Click sent to Pendo Agent ${pendoAgentVersion} at ${currentTimeStamp} by ${pendoVisitor}`);		
     			});
 			});
-			errorButtonsIntevals.forEach(function(elem) {
-    			elem.addEventListener("click", function() {
-  					sendJsErrorsOnInterval();
-    			});
-			});
 		};
 
 		function sendConsoleErrorsOnInterval() {
