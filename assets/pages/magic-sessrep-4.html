@@ -68,27 +68,37 @@
 
 		function sendConsoleErrorsOnInterval() {
 			if(pollingErrors == false) {
-				console.log('I made it into the IF fxn condition');
+				console.log('-----Turning ON console error polling-----');
 				interval = window.setInterval(function() {
 					console.error("This is a Generic Console logged Error");
 				}, 1000);
 				pollingErrors = true;
+				document.getElementById('error-btn-interval-console').style.cssText = 'color:coral';
+				document.getElementById('error-btn-interval-console').innerText = "Stop Sending Console Errors per 1 second";
 			} else {
-				console.log('I made it into the ELSE fxn condition');
+				console.log('-----Turning OFF console error polling-----');
 				window.clearInterval(interval);
 				pollingErrors = false;
+				document.getElementById('error-btn-interval-console').style.cssText = 'color:black';
+				document.getElementById('error-btn-interval-console').innerText = "Start Sending Console Errors per 1 second";
 			};
 		};
 
 		function sendJsErrorsOnInterval() {
-			if(pollingErrors = false) {
-				vinterval = window.setInterval(function() {
+			if(pollingErrors == false) {
+				console.log('-----Turning ON js error polling-----');
+				interval = window.setInterval(function() {
 					notARealFunction();
 				}, 1000);
-			pollingErrors = true;
+				pollingErrors = true;
+				document.getElementById('error-btn-interval-js').style.cssText = 'color:coral';
+				document.getElementById('error-btn-interval-js').innerText = "Stop Sending JS Errors per 1 second";
 			} else {
+				console.log('-----Turning OFF js error polling-----');
 				window.clearInterval(interval);
 				pollingErrors = false;
+				document.getElementById('error-btn-interval-js').style.cssText = 'color:black';
+				document.getElementById('error-btn-interval-js').innerText = "Start Sending JS Errors per 1 second";
 			};
 		};
 
@@ -136,8 +146,8 @@
 							<h2>Aliquam sed mauris</h2>
 							<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.</p>
 							<ul class="actions">
-								<li class="button" id="error-btn-interval" style="color:coral" onclick="sendJsErrorsOnInterval()">Start Sending JS Errors per 1 second</li>
-                                <li class="button" id="error-btn-interval" style="color:rgb(153, 255, 80)" onclick="sendConsoleErrorsOnInterval()">Start Sending Console Errors per 1 second</li>
+								<li class="button" id="error-btn-interval-js" style="color:black" onclick="sendJsErrorsOnInterval()">Start Sending JS Errors per 1 second</li>
+                                <li class="button" id="error-btn-interval-console" style="color:black" onclick="sendConsoleErrorsOnInterval()">Start Sending Console Errors per 1 second</li>
                                 <li class="button" id="error-btn" onclick="badFunction()" style="color:rgb(80, 200, 255)">Send JS error & console log error</li>
 								<li class="button" id="error-btn" style="color:orange">Send Single Console Log Error</li>
 							</ul>
