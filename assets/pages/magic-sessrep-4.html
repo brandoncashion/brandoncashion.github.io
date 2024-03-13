@@ -49,8 +49,6 @@
 		function hookupErrorClickHandler() {
 			let errorButtons = document.querySelectorAll("#error-btn");
 
-			var interval = null;
-			window.clearInterval(interval);
 			var pollingErrors = false;
 
 			var pendoAgentVersion = window.pendo.VERSION;
@@ -65,6 +63,8 @@
   					console.error(`Error Click sent to Pendo Agent ${pendoAgentVersion} at ${currentTimeStamp} by ${pendoVisitor}`);		
     			});
 			});
+
+			return pollingErrors;
 		};
 
 		function sendConsoleErrorsOnInterval() {
@@ -73,13 +73,14 @@
 				var interval = window.setInterval(function() {
 					console.error("This is a Generic Console logged Error");
 				}, 1000);
-				var interval2 = interval;
 				pollingErrors = true;
 			} else {
 				console.log('I made it into the ELSE fxn condition');
-				window.clearInterval(interval2);
+				window.clearInterval(interval);
 				pollingErrors = false;
 			};
+
+			return interval;
 		};
 
 		function sendJsErrorsOnInterval() {
