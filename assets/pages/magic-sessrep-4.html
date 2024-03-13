@@ -68,7 +68,7 @@
 
 		function sendConsoleErrorsOnInterval() {
 			if(pollingErrors == false) {
-				console.log('-----Turning ON console error polling-----');
+				console.warn('-----Turning ON console error polling-----');
 				interval = window.setInterval(function() {
 					console.error("This is a Generic Console logged Error");
 				}, 1000);
@@ -86,7 +86,7 @@
 
 		function sendJsErrorsOnInterval() {
 			if(pollingErrors == false) {
-				console.log('-----Turning ON js error polling-----');
+				console.warn('-----Turning ON js error polling-----');
 				interval = window.setInterval(function() {
 					notARealFunction();
 				}, 1000);
