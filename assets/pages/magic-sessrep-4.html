@@ -73,10 +73,11 @@
 				var interval = window.setInterval(function() {
 					console.error("This is a Generic Console logged Error");
 				}, 1000);
+				var interval2 = interval;
 				pollingErrors = true;
 			} else {
 				console.log('I made it into the ELSE fxn condition');
-				window.clearInterval(interval);
+				window.clearInterval(interval2);
 				pollingErrors = false;
 			};
 		};
