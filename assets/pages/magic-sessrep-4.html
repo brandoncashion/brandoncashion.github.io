@@ -48,6 +48,11 @@
 	<script>
 		function hookupErrorClickHandler() {
 			let errorButtons = document.querySelectorAll("#error-btn");
+
+			var interval = null;
+			window.clearInterval(interval);
+			var pollingErrors = false;
+
 			var pendoAgentVersion = window.pendo.VERSION;
 			var pendoVisitor = null;
 			var currentTimeStamp = null;
@@ -60,7 +65,37 @@
   					console.error(`Error Click sent to Pendo Agent ${pendoAgentVersion} at ${currentTimeStamp} by ${pendoVisitor}`);		
     			});
 			});
+			errorButtonsIntevals.forEach(function(elem) {
+    			elem.addEventListener("click", function() {
+  					sendJsErrorsOnInterval();
+    			});
+			});
 		};
+
+		function sendConsoleErrorsOnInterval() {
+			if(pollingErrors = false) {
+				interval = window.setInterval(function() {
+					console.error("This is a Generic Console logged Error");
+				}, 1000);
+				pollingErrors = true;
+			} else {
+				window.clearInterval(interval);
+				pollingErrors = false;
+			};
+		};
+
+		function sendJsErrorsOnInterval() {
+			if(pollingErrors = false) {
+				interval = window.setInterval(function() {
+					notARealFunction();
+				}, 1000);
+			pollingErrors = true;
+			} else {
+				window.clearInterval(interval);
+				pollingErrors = false;
+			};
+		};
+
 	</script>
 
 	</head>
@@ -105,10 +140,10 @@
 							<h2>Aliquam sed mauris</h2>
 							<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.</p>
 							<ul class="actions">
-								<li class="button" style="color:coral">Feature 1</li>
-                                <li class="button" style="color:rgb(153, 255, 80)">Feature 2</li>
-                                <li class="button" id="error-btn" onclick="badFunction()" style="color:rgb(80, 200, 255)">Send Error - missing JS</li>
-								<li class="button" id="error-btn" style="color:orange">Send Console Log Error</li>
+								<li class="button" id="error-btn-interval" style="color:coral" onclick="sendJsErrorsOnInterval()">Start Sending JS Errors per 1 second</li>
+                                <li class="button" id="error-btn-interval" style="color:rgb(153, 255, 80)" onclick="sendConsoleErrorsOnInterval()">Start Sending Console Errors per 1 second</li>
+                                <li class="button" id="error-btn" onclick="badFunction()" style="color:rgb(80, 200, 255)">Send Single Error - missing JS</li>
+								<li class="button" id="error-btn" style="color:orange">Send Single Console Log Error</li>
 							</ul>
 						</section>
 						<section>
