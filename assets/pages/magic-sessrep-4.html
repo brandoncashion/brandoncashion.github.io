@@ -69,11 +69,13 @@
 
 		function sendConsoleErrorsOnInterval() {
 			if(pollingErrors = false) {
+				console.log('I made it into the IF fxn condition');
 				var interval = window.setInterval(function() {
 					console.error("This is a Generic Console logged Error");
 				}, 1000);
 				pollingErrors = true;
 			} else {
+				console.log('I made it into the ELSE fxn condition');
 				window.clearInterval(interval);
 				pollingErrors = false;
 			};
