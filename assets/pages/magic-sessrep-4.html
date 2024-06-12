@@ -106,6 +106,14 @@
 			};
 		};
 
+		function catchErrorFunction() {
+			try {
+				badFunction();
+        	} catch (error) {
+            	throw new Error(`Function failed - ${get(error, 'response', error)}`);
+        	}
+		}
+
 	</script>
 
 	</head>
@@ -152,7 +160,7 @@
 							<ul class="actions">
 								<li class="button" id="error-btn-interval-js" style="color:black" onclick="sendJsErrorsOnInterval()">Start Sending JS Errors per 1 second</li>
                                 <li class="button" id="error-btn-interval-console" style="color:black" onclick="sendConsoleErrorsOnInterval()">Start Sending Console Errors per 1 second</li>
-                                <li class="button" id="error-btn" onclick="badFunction()" style="color:grey">ThisIsTextToTestTruncationLimitsOf1500zzzalsdjflaskjdflsajdflasjdkflasjkdflasjdfkdsajflaskdfjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsajekdickdieksleidkflsielflskdlfsadjflisejflsThisIsTextToTestTruncationLimitsOf1500zzzalsdjflaskjdflsajdflasjdkflasjkdflasjdfkdsajflaskdfjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsajekdickdieksleidkflsielflskdlfsadjflisejflsThisIsTextToTestTruncationLimitsOf1500zzzalsdjflaskjdflsajdflasjdkflasjkdflasjdfkdsajflaskdfjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsajekdickdieksleidkflsielflskdlfsadjflisejfls</li>
+                                <li class="button" id="error-btn" onclick="catchErrorFunction()" style="color:grey">ThisIsTextToTestTruncationLimitsOf1500zzzalsdjflaskjdflsajdflasjdkflasjkdflasjdfkdsajflaskdfjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsajekdickdieksleidkflsielflskdlfsadjflisejflsThisIsTextToTestTruncationLimitsOf1500zzzalsdjflaskjdflsajdflasjdkflasjkdflasjdfkdsajflaskdfjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsajekdickdieksleidkflsielflskdlfsadjflisejflsThisIsTextToTestTruncationLimitsOf1500zzzalsdjflaskjdflsajdflasjdkflasjkdflasjdfkdsajflaskdfjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsajekdickdieksleidkflsielflskdlfsadjflisejfls</li>
 								<li class="button" id="error-btn" style="color:grey">Send Single Console Log Error</li>
 							</ul>
 						</section>
