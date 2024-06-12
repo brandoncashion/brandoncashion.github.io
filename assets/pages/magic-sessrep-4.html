@@ -110,7 +110,7 @@
 			try {
 				badFunction();
         	} catch (error) {
-            	throw new Error(`Function failed - ${get(error, 'response', error)}`);
+            	throw new Error(`Function failed - ${error}`);
         	}
 		}
 
