@@ -110,7 +110,14 @@
 			try {
 				badFunction();
         	} catch (err) {
-            	//throw new Error(`This is an Error, ooo ouch, owie`);
+            	throw new Error(`This is an Error, ooo ouch, owie`);
+        	}
+		}
+
+		function catchLongErrorFunction() {
+			try {
+				badFunction();
+        	} catch (err) {
 				throw new Error(`ThisIsTextToTestTruncationLimitsOf1500zzzalsdjflaskjdflsajdflasjdkflasjkdflasjdfkdsajflaskdfjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsajekdickdieksleidkflsielflskdlfsadjflisejflsThisIsTextToTestTruncationLimitsOf1500zzzalsdjflaskjdflsajdflasjdkflasjkdflasjdfkdsajflaskdfjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsajekdickdieksleidkflsielflskdlfsadjflisejflsThisIsTextToTestTruncationLimitsOf1500zzzalsdjflaskjdflsajdflasjdkflasjkdflasjdfkdsajflaskdfjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsajekdickdieksleidkflsielflskdlfsadjflisejflzzzzzzzzzz`);
         	}
 		}
@@ -161,8 +168,8 @@
 							<ul class="actions">
 								<li class="button" id="error-btn-interval-js" style="color:black" onclick="sendJsErrorsOnInterval()">Start Sending JS Errors per 1 second</li>
                                 <li class="button" id="error-btn-interval-console" style="color:black" onclick="sendConsoleErrorsOnInterval()">Start Sending Console Errors per 1 second</li>
-                                <li class="button" id="error-btn" onclick="catchErrorFunction()" style="color:grey">Send a JS error</li>
-								<li class="button" id="error-btn" style="color:grey">Send Single Console Log Error</li>
+                                <li class="button" id="error-btn" onclick="catchErrorFunction()" style="color:grey">Send a short JS error</li>
+								<li class="button" id="error-btn" onclick="catchLongErrorFunction()" style="color:grey">Send a long JS error</li>
 							</ul>
 						</section>
 						<section>
