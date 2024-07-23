@@ -1,0 +1,226 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Magic env Session Replay testing</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="../js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../css/ie8.css" /><![endif]-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+		<script src ="../js/skel.min.js" type="text/javascript"></script>
+		<script src ="../js/util.js" type="text/javascript"></script>
+		<script src ="../js/jquery.scrollex.min.js" type="text/javascript"></script>
+		<script src ="../js/jquery.scrolly.min.js" type="text/javascript"></script>
+		<script src ="../js/main.js" type="text/javascript"></script>
+
+		<!-- Initialize Pendo Snippet -->
+		<script>
+			(function(apiKey){
+				(function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=o._q||[];
+				v=['initialize','identify','updateOptions','pageLoad','track'];for(w=0,x=v.length;w<x;++w)(function(m){
+					o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
+					y=e.createElement(n);y.async=!0;y.src='https://cdn.hsbc.pendo.io/agent/static/'+apiKey+'/pendo.js';
+					z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
+			
+					// This function creates visitors and accounts in Pendo
+					// You will need to replace <visitor-id-goes-here> and <account-id-goes-here> with values you use in your app
+					// Please use Strings, Numbers, or Bools for value types.
+					pendo.initialize({
+						visitor: {
+							id:              "visitor01", // Required if user is logged in
+							email:        	 "visitor01@pendo-testing.com" // Recommended if using Pendo Feedback, or NPS Email
+							// full_name:    // Recommended if using Pendo Feedback
+							// role:         // Optional
+			
+							// You can add any additional visitor level key-values here,
+							// as long as it's not one of the above reserved names.
+						},
+			
+						account: {
+							id:              "0001" // Highly recommended, required if using Pendo Feedback
+							// name:         // Optional
+							// is_paying:    // Recommended if using Pendo Feedback
+							// monthly_value:// Recommended if using Pendo Feedback
+							// planLevel:    // Optional
+							// planPrice:    // Optional
+							// creationDate: // Optional
+			
+							// You can add any additional account level key-values here,
+							// as long as it's not one of the above reserved names.
+						}
+					});
+			})('PENDO_API_KEY');
+			</script>
+	<!-- Add Event Listener to send Error Clicks to the Pendo Agent -->
+	<script>
+		var pollingErrors = false;
+		var interval = null;
+
+		function hookupErrorClickHandler() {
+			let errorButtons = document.querySelectorAll("#error-btn");
+
+			var pendoAgentVersion = window.pendo.VERSION;
+			var pendoVisitor = null;
+			var currentTimeStamp = null;
+
+			window.console.log('-------Adding Error-Click Listener to the page-------');
+			errorButtons.forEach(function(elem) {
+    			elem.addEventListener("click", function() {
+					currentTimeStamp = Date.now();
+					pendoVisitor = window.pendo.getVisitorId();
+  					console.error(`Error Click sent to Pendo Agent ${pendoAgentVersion} at ${currentTimeStamp} by ${pendoVisitor}`);		
+    			});
+			});
+		};
+
+		function sendConsoleErrorsOnInterval() {
+			if(pollingErrors == false) {
+				console.warn('-----Turning ON console error polling-----');
+				interval = window.setInterval(function() {
+					console.error("This is a Generic Console logged Error");
+				}, 1000);
+				pollingErrors = true;
+				document.getElementById('error-btn-interval-console').style.cssText = 'color:coral';
+				document.getElementById('error-btn-interval-console').innerText = "Stop Sending Console Errors per 1 second";
+			} else {
+				console.log('-----Turning OFF error polling-----');
+				window.clearInterval(interval);
+				pollingErrors = false;
+				document.getElementById('error-btn-interval-console').style.cssText = 'color:black';
+				document.getElementById('error-btn-interval-console').innerText = "Start Sending Console Errors per 1 second";
+				document.getElementById('error-btn-interval-js').style.cssText = 'color:black';
+				document.getElementById('error-btn-interval-js').innerText = "Start Sending JS Errors per 1 second";
+			};
+		};
+
+		function sendJsErrorsOnInterval() {
+			if(pollingErrors == false) {
+				console.warn('-----Turning ON js error polling-----');
+				interval = window.setInterval(function() {
+					notARealFunction();
+				}, 1000);
+				pollingErrors = true;
+				document.getElementById('error-btn-interval-js').style.cssText = 'color:coral';
+				document.getElementById('error-btn-interval-js').innerText = "Stop Sending JS Errors per 1 second";
+			} else {
+				console.log('-----Turning OFF error polling-----');
+				window.clearInterval(interval);
+				pollingErrors = false;
+				document.getElementById('error-btn-interval-js').style.cssText = 'color:black';
+				document.getElementById('error-btn-interval-js').innerText = "Start Sending JS Errors per 1 second";
+				document.getElementById('error-btn-interval-console').style.cssText = 'color:black';
+				document.getElementById('error-btn-interval-console').innerText = "Start Sending Console Errors per 1 second";
+			};
+		};
+
+		function catchErrorFunction() {
+			try {
+				badFunction();
+        	} catch (err) {
+            	throw new Error(`This is an Error, ooo ouch, owie`);
+        	}
+		}
+
+		function catchLongErrorFunction() {
+			try {
+				badFunction();
+        	} catch (err) {
+				throw new Error(`ThisIsTextToTestTruncationLimitsOf1500zzzalsdjflaskjdflsajdflasjdkflasjkdflasjdfkdsajflaskdfjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsajekdickdieksleidkflsielflskdlfsadjflisejflsThisIsTextToTestTruncationLimitsOf1500zzzalsdjflaskjdflsajdflasjdkflasjkdflasjdfkdsajflaskdfjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsajekdickdieksleidkflsielflskdlfsadjflisejflsThisIsTextToTestTruncationLimitsOf1500zzzalsdjflaskjdflsajdflasjdkflasjkdflasjdfkdsajflaskdfjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsjlsadjfkasdfjlsadkfjlsadfjkasldfjlkasjdflsajkdflasjdkjfalsdkfjlaskdfjlasdkfjlaskdfjlasdkflsajekdickdieksleidkflsielflskdlfsadjflisejflzzzzzzzzzz`);
+        	}
+		}
+
+	</script>
+
+	</head>
+	<body onload="hookupErrorClickHandler()" style=background-color:teal>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+						<header id="header">
+						<h1>Env: Prod EU  HSBC</h1>
+						<p>Sub Display Name: Pendo Internal Subscription</p>
+                        <p>**For Testing purposes**</p>
+						</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+							<section id="content" class="main">
+								<span class="image main"><img src="/images/pic04.jpg" alt="" /></span>
+
+
+								<h2>Magna feugiat lorem</h2>
+								<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis fames ac ante ipsum primis in faucibus.</p>
+								<p>Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Consequat leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit enim turpis lorem ipsum dolor sit amet feugiat. Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet est velit quis lorem.</p>
+								<h2>Tempus veroeros</h2>
+								<p>Cep risus aliquam gravida cep ut lacus amet. Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae ante vestibulum ante. Blandit. Ante accumsan nisi eu placerat gravida placerat adipiscing in risus fusce vitae ac mi accumsan nunc in accumsan tempor blandit aliquet aliquet lobortis. Ultricies blandit lobortis praesent turpis. Adipiscing accumsan adipiscing adipiscing ac lacinia cep. Orci blandit a iaculis adipiscing ac. Vivamus ornare laoreet odio vis praesent nunc lorem mi. Erat. Tempus sem faucibus ac id. Vis in blandit. Nascetur ultricies blandit ac. Arcu aliquam. Accumsan mi eget adipiscing nulla. Non vestibulum ac interdum condimentum semper commodo massa arcu.</p>
+
+								<!-- Below here is an option iFrame from same domain.  Comment out if not needed-->
+								<!--iframe src = "https://brandoncashion.github.io/assets/pages/magic-sessrep-iframe.html" width = "555" height = "200">
+         								THIS IS AN IFRAME
+      								</iframe-->
+
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<h2>Aliquam sed mauris</h2>
+							<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.</p>
+							<ul class="actions">
+								<li class="button" id="error-btn-interval-js" style="color:black" onclick="sendJsErrorsOnInterval()">Start Sending JS Errors per 1 second</li>
+                                <li class="button" id="error-btn-interval-console" style="color:black" onclick="sendConsoleErrorsOnInterval()">Start Sending Console Errors per 1 second</li>
+                                <li class="button" id="error-btn" onclick="catchErrorFunction()" style="color:grey">Send a short JS error</li>
+								<li class="button" id="error-btn" onclick="catchLongErrorFunction()" style="color:grey">Send a long JS error</li>
+							</ul>
+						</section>
+						<section>
+							<h2>Etiam feugiat</h2>
+                            <h3>
+                                <audio controls>
+                                    <source src="https://www2.cs.uic.edu/~i101/SoundFiles/gettysburg.wav" type="audio/wav">
+                                  </audio>
+                            </h3>
+							<dl class="alt">
+								<dt>Address</dt>
+								<dd>1234 Somewhere Road &bull; Nashville, TN 00000 &bull; USA</dd>
+								<dt>Phone</dt>
+								<dd>(000) 000-0000 x 0000</dd>
+								<dt>Email</dt>
+								<dd>information@untitled.tld</dd>
+							</dl>
+							<ul class="icons">
+								<li class="icon fa-twitter alt"><span class="label">Twitter</span></li>
+								<li class="icon fa-facebook alt"><span class="label">Facebook</span></li>
+								<li class="icon fa-instagram alt"><span class="label">Instagram</span></li>
+								<li class="icon fa-github alt"><span class="label">GitHub</span></li>
+								<li class="icon fa-dribbble alt"><span class="label">Dribbble</span></li>
+							</ul>
+						</section>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../js/jquery.min.js"></script>
+			<script src="../js/jquery.scrollex.min.js"></script>
+			<script src="../js/jquery.scrolly.min.js"></script>
+			<script src="../js/skel.min.js"></script>
+			<script src="../js/util.js"></script>
+			<!--[if lte IE 8]><script src="../js/ie/respond.min.js"></script><![endif]-->
+			<script src="../js/main.js"></script>
+
+	</body>
+</html>
